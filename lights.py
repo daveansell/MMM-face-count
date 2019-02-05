@@ -5,7 +5,7 @@ import os
 import sys
 
 pixel_pin = board.D18
-
+directory = os.path.dirname(os.path.realpath(__file__))
 # The number of NeoPixels
 num_pixels = 28
 
@@ -23,10 +23,10 @@ while True:
     if ch==b'1':
         print ("on")
         pixels.fill((255, 255, 255))
-        os.system("./ledsOn")
+        os.system(directory+"/ledsOn")
     elif ch==b'0':
         pixels.fill((0,0,0))
-        os.system("./ledsOff")
+        os.system(directory+"/ledsOff")
     elif ch==b'q':
         sys.exit()
     pixels.show()
