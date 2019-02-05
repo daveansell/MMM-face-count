@@ -1,5 +1,6 @@
 var NodeHelper = require("node_helper");
 var lastDetect = 0;
+var lastSent = 0;
 var currentPage =-1;
 var thethis;
 module.exports = NodeHelper.create({
@@ -26,7 +27,11 @@ module.exports = NodeHelper.create({
 	  if(DEBUG)
 	    console.log("data=",data);
 	  lastDetect = Date.now();
-	  this.sendSocketNotification("PAGE_ACTIVATE", 1);
+	    //limit rate at which it sends updates. If this is less than the blankTime in MMM_pages things will get flashy
+	  if(lastDetect - lastSent > 3000){ 
+	  	this.sendSocketNotification("PAGE_ACTIVATE", 1);
+	  	lastSent = lastDetect;
+	  }
 //	  lights.stdin.write("1\n");
     });
  //   setInterval(function(){
