@@ -1,0 +1,9 @@
+#!/bin/bash
+# Set the PWR LED to GPIO mode
+echo gpio | sudo tee /sys/class/leds/led1/trigger
+# SET the ACT LED to GPIO mode
+echo gpio | sudo tee /sys/class/leds/led0/trigger
+
+# turn off LEDs
+echo 0 | sudo tee /sys/class/leds/led1/brightness
+echo 0 | sudo tee /sys/class/leds/led0/brightness
