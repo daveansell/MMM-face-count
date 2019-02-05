@@ -4,6 +4,8 @@ import neopixel
 import os
 import sys
 
+# Turns on and off a strip of neopixels, and the Pi's leds
+
 pixel_pin = board.D18
 directory = os.path.dirname(os.path.realpath(__file__))
 # The number of NeoPixels
